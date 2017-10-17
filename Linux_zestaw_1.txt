@@ -1,0 +1,98 @@
+ZAD.1
+#!/bin/sh
+
+echo 'Hello world'
+
+
+
+ZAD.2
+#!/usr/bin/enc bash
+
+echo 'Wpisz imie i nazwisko oraz pesel'
+read imie
+read nazwisko
+read -N 11 pesel
+
+echo $imie
+echo $nazwisko
+echo $pesel
+
+
+
+ZAD.3
+#!/bin/env bash
+
+haslo='haslo'
+read slowo
+if [ $slowo != $haslo ]; then
+	read slowo
+	if [ $slowo != $haslo ]; then
+		exit 0
+	else
+		ls -al
+	fi
+else
+	ls -al
+fi
+
+
+
+ZAD.4
+#!/usr/bin/env bash
+
+echo 'podaj wartosc a'
+read a
+echo 'podaj wartosc b'
+read b
+echo 'podaj dzialanie +,-,*,/'
+read dz
+
+if [ $dz = "+" ]; then
+	wynik=$(($a+$b))
+	echo $wynik
+elif [ $dz = "-" ]; then
+	wynik=$(($a-$b))
+	echo $wynik
+elif [ $dz = "*" ]; then
+	wynik=$(($a*$b))
+	echo $wynik
+elif [ $dz = "/" ]; then
+	wynik=$(($a/$b))
+	echo $wynik
+fi
+
+
+
+ZAD.5
+#!/bin/nawk -f
+
+awk '{ if ( length($0) > max) { max=length($0); number=NR; }} END { print line, "\nlength: ", max, "\nnumber: ", number }' $1
+
+
+
+ZAD.6
+#!/usr/bin/env bash
+
+awk -v min=0 -v max=100 'BEGIN { srand(); print int(min+rand()*(max-min+1))}'
+
+
+
+ZAD.7
+#!/bin/awk -f
+
+awk 'NR%2==0 {print}'
+
+
+
+ZAD.8
+sed -n '4!p' file
+
+
+
+ZAD.9
+sed -n '/ha/p' file
+
+
+
+ZAD.10
+sed '1,5!d' file
